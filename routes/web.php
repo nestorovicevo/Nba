@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TeamsController@index');
+
+Route::get('/teams/{id}', 'TeamsController@get')->name('single-team');
+
+// Route::get('/teams/{id}', ['as' => 'single-team', 'uses' => 'TeamsController@get']); 
