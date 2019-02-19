@@ -13,4 +13,6 @@
 
 Route::get('/', 'TeamsController@index');
 
-Route::get('/teams/{id}', 'TeamsController@get');
+Route::get('/teams/{id}', 'TeamsController@get')->name('single-team');
+
+Route::get('/players/{id}', 'PlayersController@get');

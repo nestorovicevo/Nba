@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Player;
 
 class PlayersController extends Controller
 {
-    //
+    public function get($id)
+    {
+        $player = Player::findOrFail($id);
+
+        return view('player', compact('player'));
+    }
 }
