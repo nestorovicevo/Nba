@@ -24,15 +24,7 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
-              {{-- @foreach ($lastFive as $oneMovie)
 
-              <li class="nav-item">
-                <a class="nav-link active" href="{{ route('single-movie', ['id' => $oneMovie->id]) }}">
-                  <span data-feather="home"></span>
-                  {{$oneMovie->title}} <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              @endforeach --}}
             </ul>
 
           </div>
@@ -45,24 +37,13 @@
             <h3>{{ $team->adress}}</h3>
             <h4>{{ $team->city}}</h4>
             <ul>
-
-                <ul>
-                    
-                        
-                        @if ($team->player)
-                        @foreach ( as )
-                            
-                        @endforeach
-                        <p>{{ $team->player->first_name }}</p>
-                        @endforeach
-                        @endif
-                    @endforeach
-                </ul>
-
-
+              @if (!empty($team->players))
+                @foreach ( $team->players as $player)
               <li>
-                
+                  <p>{{ $player->first_name . ' ' . $player->last_name }}</p>
               </li>
+                @endforeach
+              @endif
             </ul>
           </div>
         </main>

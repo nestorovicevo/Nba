@@ -13,6 +13,4 @@
 
 Route::get('/', 'TeamsController@index');
 
-Route::get('/teams/{id}', 'TeamsController@get')->name('single-team');
-
-// Route::get('/teams/{id}', ['as' => 'single-team', 'uses' => 'TeamsController@get']); 
+Route::get('/teams/{id}', 'TeamsController@get');

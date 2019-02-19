@@ -23,7 +23,7 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
-            <ul class="nav flex-column">
+            <!-- <ul class="nav flex-column">
               {{-- @foreach ($lastFive as $oneMovie)
 
               <li class="nav-item">
@@ -32,8 +32,8 @@
                   {{$oneMovie->title}} <span class="sr-only">(current)</span>
                 </a>
               </li>
-              @endforeach --}}
-            </ul>
+              <!-- @endforeach --}} -->
+            </ul> -->
 
           </div>
         </nav>
@@ -44,7 +44,7 @@
               @foreach ($teams as $team)
 
               <li>
-                <a href="{{route('single-team'}}"><h1>{{$team->name}}</h1></a>
+                <a href="./teams/{{$team->id}}"><h1>{{$team->name}}</h1></a>
               </li>
 
               @endforeach
