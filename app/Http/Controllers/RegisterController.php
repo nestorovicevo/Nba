@@ -20,7 +20,13 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'sometimes|required_with:password'
         ]);
-        User::create($request->only(['email', 'name', 'password', 'password_confirmation']));
+
+        $data = $request->only(['email', 'name', 'password', 'password_confirmation']);
+        $data['password'] = bcrypt($data['password']);
+
+        $user = User::create($data);
+        auth()->login($user);
+
         return redirect()->route('all-teams');
     }
 }
