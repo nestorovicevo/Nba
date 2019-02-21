@@ -9,18 +9,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
 
   <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Register</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-      <div>
-        @if(auth()->check())
-
-        <a class="btn btn-outline-primary" href="#">Logout</a>
-        @else
-        <a class="btn btn-outline-primary" href="#">Sign up</a>
-        @endif
-
-    </nav>
+    <@include('layouts.nav-bar')
 
     <div class="container-fluid">
       <div class="row">
