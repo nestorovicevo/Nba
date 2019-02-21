@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/register', ['as' => 'show-register', 'uses' => 'RegisterController@create']);
-Route::post('/register', 'RegisterController@store')->name('register');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/register', ['as' => 'show-register', 'uses' => 'RegisterController@create']);
+    Route::post('/register', 'RegisterController@store')->name('register');
+    Route::get('/login', 'LoginController@create')->name('show-login');
+    Route::post('/login', 'LoginController@store')->name('login');
+});
 
 Route::get('/logout', 'LoginController@logout')->name('logout');
-
-Route::get('/login', 'LoginController@create')->name('show-login');
-
-Route::post('/login', 'LoginController@store')->name('login');
 
 Route::get('/', 'TeamsController@index')->name('all-teams');
 
