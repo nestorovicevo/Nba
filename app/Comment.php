@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    public $timestamps = false;
+
     protected $fillable = [
         'content', 'team_id', 'user_id'
     ];

@@ -19,17 +19,18 @@ class CommentsController extends Controller
         $request->validate(
             [
                 'content' => 'required | min:10'
-            ]
-        );
-
-        $team = Team::find($team_id);
-
-        Comment::create([
-            'content' => $request->get('content'),
-            'team_id' => $team->id,
-            'user_id' => Auth::user()->id
-        ]);
-
-        return redirect()->route('single-team', ['id' => $team_id]);
+                ]
+            );
+            
+            $team = Team::find($team_id);
+            
+            $comment = Comment::create([
+                'content' => $request->get('content'),
+                'team_id' => $team->id,
+                'user_id' => Auth::user()->id
+            ]);
+            
+            
+            return redirect()->route('single-team', ['id' => $team_id]);
     }
 }
