@@ -15,13 +15,22 @@ class BadWordsMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->bad_words = 'hate' && 'stupid' && 'idiot') {
-            session()->flash(
-                'message',
-                'Stop writing bad words!'
-            );
+        $bad_words = [
+            'hate',
+            'stupid',
+            'idiot',
+        ];
+ 
+        foreach ($bad_words as $word) {
+            if(strstr($request->content, $word)) {
+                session()->flash(
+                    'message',
+                    'This is really not apropriate language!Shame on you!'
+                );
                 return redirect()->back();
             }
-            return $next($request);
+        }
+ 
+        return $next($request);
     }
 }

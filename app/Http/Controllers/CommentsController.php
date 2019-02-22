@@ -6,6 +6,7 @@ use App\Team;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Mail\CommentReceived;
 
 class CommentsController extends Controller
 {
@@ -29,8 +30,15 @@ class CommentsController extends Controller
                 'team_id' => $team->id,
                 'user_id' => Auth::user()->id
             ]);
+
+            if ($team->user) {
+                \Mail::to($team->user)->send(new CommentReceived( $team, $comment    //jer postoje postovi koji nemaju korisnike
+                
+            ));
+            }
             
             
-            return redirect()->route('single-team', ['id' => $team_id]);
+            return redirect()->back();
+            dd('reci');
     }
 }
