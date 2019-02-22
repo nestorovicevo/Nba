@@ -65,6 +65,12 @@
                       @include('messages.error', ['fieldTitle' => 'comment'])
                   </div>
 
+                  @if($message = session('message'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ $message }}
+                    </div>
+                  @endif
+
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary">Submit</button>
                   </div>

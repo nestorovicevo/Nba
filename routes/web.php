@@ -19,6 +19,8 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::post('/teams/{team_id}/comments', ['as' => 'team-comments', 'uses' => 'CommentsController@store']);
+Route::post('/teams/{team_id}/comments', ['as' => 'team-comments', 'uses' => 'CommentsController@store'])->middleware('bad_words');
+
 // Route::post('/teams/{team_id}/comments', 'CommentsController@store')->name('comments');
 
 

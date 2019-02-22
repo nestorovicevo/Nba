@@ -25,8 +25,8 @@ class RegisterController extends Controller
         $data['password'] = bcrypt($data['password']);
 
         $user = User::create($data);
-        auth()->login($user);
+        // auth()->login($user);
 
-        return redirect()->route('all-teams');
+        return redirect()->route('login');
     }
 }
