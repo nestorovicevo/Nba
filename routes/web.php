@@ -18,6 +18,8 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('/login', 'LoginController@store')->name('login');
 });
 
+Route::post('/teams/{team_id}/comments', ['as' => 'team-comments', 'uses' => 'CommentsController@store']);
+
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
 Route::get('/', 'TeamsController@index')->name('all-teams');

@@ -2,35 +2,21 @@
 
 namespace App;
 
-use Illuminate\Http\Request;
-use App\Team;
-use App\Comment;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 
-class CommentsController extends Controller
+class Comment extends Model
 {
-    public function __construct()
+    protected $fillable = [
+        'content', 'team_id', 'user_id'
+    ];
+
+    public function user()
     {
-        $this->middleware('forbidden-comment')->only('store');
+        return $this->belongsTo(User::class);
     }
 
-    public function store (Request $request, $team_id) {
-
-        $request->validate(
-            [
-                'content' => 'required | min:10'
-            ]
-        );
-
-        $team = Team::find($team_id);
-
-        Comment::create([
-            'content' => $request->get('content'),
-            'team_id' => $team->id,
-            'user_id' => Auth::user()->id,
-        ]);
-
-        return redirect()->route('single-team', ['id' => $team_id]);
-
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
-
+}
